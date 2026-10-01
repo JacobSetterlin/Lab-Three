@@ -22,4 +22,6 @@ def main():
     print("3. Tarzan")
     print("4. Treasure Island")
 
+    user_choice = input("Enter the number of your choice: ")
+
 main()
