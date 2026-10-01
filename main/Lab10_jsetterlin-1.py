@@ -16,4 +16,10 @@ def main():
                   "3": Path.cwd() / "textfiles" / "Tarzan.txt",
                   "4": Path.cwd() / "textfiles" / "treasure_island.txt"}
 
+    print("Select a file to analyze:")
+    print("1. Monte Cristo")
+    print("2. Princess Mars")
+    print("3. Tarzan")
+    print("4. Treasure Island")
+
 main()
