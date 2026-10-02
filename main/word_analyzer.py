@@ -26,9 +26,10 @@ class WordAnalyzer:
         """
         Used to hold the main logic of processing files.
         """
-        
-        translation_table = str.maketrans("", "", string.punctuation)
-        no_punctuation = self.filepath.read_text(encoding="utf-8").translate(translation_table)
+
+
+        translation_table = str.maketrans("", "", string.punctuation + "”" + "“" + "‘" + "’" + "•")
+        no_punctuation = self.filepath.read_text(encoding="utf-8-sig").translate(translation_table)
         no_punctuation = no_punctuation.lower()
 
         # The below line of code is recieved from Claude sonnet 5.5.
