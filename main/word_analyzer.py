@@ -27,3 +27,4 @@ class WordAnalyzer:
         
         translation_table = str.maketrans("", "", string.punctuation)
         no_punctuation = self.filepath.read_text(encoding="utf-8").translate(translation_table)
+        no_punctuation = no_punctuation.lower()
