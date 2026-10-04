@@ -27,20 +27,26 @@ class WordAnalyzer:
         Used to hold the main logic of processing files.
         """
 
+        try:
+            self.filepath.exists()
+        except FileNotFoundError:
+            print("File not found, please select a valid file.")
+            return False
+        else:
+            translation_table = str.maketrans("", "", string.punctuation + "”" + "“" + "‘" + "’" + "•")
+            with self.filepath.open(encoding="utf-8-sig") as file:
+                prepared_file = file.read().translate(translation_table).lower()
 
-        translation_table = str.maketrans("", "", string.punctuation + "”" + "“" + "‘" + "’" + "•")
-        with self.filepath.open(encoding="utf-8-sig") as file:
-            prepared_file = file.read().translate(translation_table).lower()
+            # The below line of code is recieved from Claude sonnet 5.5.
+            # The split() method takes a string and puts each word into a list.
+            word_list = prepared_file.split()
 
-        # The below line of code is recieved from Claude sonnet 5.5.
-        # The split() method takes a string and puts each word into a list.
-        word_list = prepared_file.split()
-
-        for word in word_list:
-            if word in self.word_frequnecy:
-                self.word_frequnecy[word] += 1
-            else:
-                self.word_frequnecy[word] = 1
+            for word in word_list:
+                if word in self.word_frequnecy:
+                    self.word_frequnecy[word] += 1
+                else:
+                    self.word_frequnecy[word] = 1
+            return True
 
     def print_report(self):
         """Used to print the frequency of words within a text file."""
