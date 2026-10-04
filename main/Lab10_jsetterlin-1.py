@@ -9,6 +9,7 @@ Last updated on 10/4/2026
 """
 
 from pathlib import Path
+from word_analyzer import WordAnalyzer
 
 def main():
     """Used to run the main logic of the program."""
@@ -29,5 +30,13 @@ def main():
 
         if user_choice == "5":
             quit()
+
+        if user_choice not in file_paths:
+            print("Please select a valid file.")
+            continue
+
+        word_analyzer = WordAnalyzer(file_paths[user_choice])
+        if word_analyzer.process_file():
+            word_analyzer.print_report()
 
 main()
