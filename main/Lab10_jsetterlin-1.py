@@ -39,4 +39,5 @@ def main():
         if word_analyzer.process_file():
             word_analyzer.print_report()
 
-main()
+if __name__ == "__main__":
+    main()
